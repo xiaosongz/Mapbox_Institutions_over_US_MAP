@@ -6,6 +6,7 @@ library(tidyverse)
 library(mapboxapi)
 # setup mapboxapi
 # you will need to get an api from mapbox.com if you want to run this your self
+# and you will need to set the token = "your token"
 source("token.R")
 mapboxapi::mb_access_token(token,install = TRUE)
 
@@ -43,6 +44,9 @@ map_df = results %>%
 
 # save RDS to play later
 map_df %>% saveRDS(.,"map_df.rds")
+
+# load the RDS file to plot
+map_df = readRDS("map_df.rds")
 # now create map use mapbox 
 library(plotly)
 
